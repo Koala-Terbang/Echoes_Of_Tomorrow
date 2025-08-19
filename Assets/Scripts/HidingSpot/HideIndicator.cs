@@ -11,6 +11,7 @@ public class HideIndicator : MonoBehaviour
     public GameObject interactPrompt;
     HidingSpot nearbySpot;
     HidingSpot currentSpot;
+    private PlayerStealth stealth;
     bool isHidden;
     bool isSnapping;
 
@@ -18,6 +19,7 @@ public class HideIndicator : MonoBehaviour
     {
         ShowPrompt(false);
         playerCollider = GetComponent<CircleCollider2D>();
+        stealth = GetComponent<PlayerStealth>();
     }
 
     void Update()
@@ -53,6 +55,7 @@ public class HideIndicator : MonoBehaviour
 
         spot.Enter(gameObject);
         currentSpot = spot;
+        stealth.SetHidden(true);
         isHidden = true;
         isSnapping = true;
 
@@ -68,6 +71,7 @@ public class HideIndicator : MonoBehaviour
 
         spot.Exit(gameObject);
         currentSpot = null;
+        stealth.SetHidden(false);
         isHidden = false;
         isSnapping = false;
     }
