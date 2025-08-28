@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class NPCChase : MonoBehaviour
 {
-    public Transform player;
+    private Transform player;
     public float patrolSpeed = 2f;
-    public float chaseSpeed  = 3.5f;
-    public float arrive      = 0.2f;
+    public float chaseSpeed = 3.5f;
+    public float arrive = 0.2f;
     public Transform[] waypoints;
     public float stuckTime = 3f;
     public float minMovePerSec = 0.02f;
@@ -24,6 +24,8 @@ public class NPCChase : MonoBehaviour
 
     void Awake()
     {
+        GameObject p = GameObject.FindGameObjectWithTag("Player");
+        player = p.transform;
         rb = GetComponent<Rigidbody2D>();
         rb.gravityScale = 0f;
         rb.freezeRotation = true;

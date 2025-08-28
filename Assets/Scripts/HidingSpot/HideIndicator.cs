@@ -6,7 +6,7 @@ public class HideIndicator : MonoBehaviour
 {
     public PlayerMovement movementScript;
     private CircleCollider2D playerCollider;
-    public Renderer[] renderersToHide;
+    public SpriteRenderer renderersToHide;
     private float snapSpeed = 20f;
     public GameObject interactPrompt;
     HidingSpot nearbySpot;
@@ -51,7 +51,7 @@ public class HideIndicator : MonoBehaviour
         movementScript.enabled = false;
         playerCollider.enabled = false;
 
-        foreach (var r in renderersToHide) if (r) r.enabled = false;
+        renderersToHide.enabled = false;
 
         spot.Enter(gameObject);
         currentSpot = spot;
@@ -67,7 +67,7 @@ public class HideIndicator : MonoBehaviour
         movementScript.enabled = true;
         playerCollider.enabled = true;
 
-        foreach (var r in renderersToHide) if (r) r.enabled = true;
+        renderersToHide.enabled = true;
 
         spot.Exit(gameObject);
         currentSpot = null;
