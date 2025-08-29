@@ -46,12 +46,10 @@ public class VisionCone : MonoBehaviour
         if (hit.collider && hit.collider.CompareTag("Player"))
         {
             npc.See(to);
-            Debug.DrawLine(from, to, Color.green);
         }
         else
         {
             npc.LostSight();
-            if (hit.collider) Debug.DrawLine(from, hit.point, Color.red);
         }
     }
 

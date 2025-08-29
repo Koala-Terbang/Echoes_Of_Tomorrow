@@ -25,15 +25,11 @@ public class CameraMechanics : MonoBehaviour
         {
             for (int i = 0; i < responders.Length; i++)
                 if (responders[i]) responders[i].See(to);
-
-            Debug.DrawLine(from, to, Color.green);
         }
         else
         {
             for (int i = 0; i < responders.Length; i++)
                 if (responders[i]) responders[i].LostSight();
-
-            if (hit.collider) Debug.DrawLine(from, hit.point, Color.red);
         }
     }
 
