@@ -28,6 +28,8 @@ public class PlayerScan : MonoBehaviour
             if (drone) drone.Reveal();
             var visualCone = hits[i].GetComponentInParent<VisionCone>() ?? hits[i].GetComponent<VisionCone>();
             if (visualCone) visualCone.Reveal();
+            var camCone = hits[i].GetComponentInParent<CameraMechanics>() ?? hits[i].GetComponent<CameraMechanics>();
+            if (camCone) camCone.Reveal();
         }
     }
     void OnDrawGizmosSelected()

@@ -6,11 +6,31 @@ public class CameraMechanics : MonoBehaviour
 {
     public NPCChase[] responders;
     public LayerMask losMask;
-
-    void Reset()
+    private SpriteRenderer sr;
+    Coroutine hideRoutine;
+    void Awake()
     {
-        var trig = GetComponent<Collider2D>();
-        if (trig) trig.isTrigger = true;
+        sr = GetComponent<SpriteRenderer>();
+        HideImmediate();
+    }
+
+    public void Reveal()
+    {
+        sr.enabled = true;
+
+        if (hideRoutine != null) StopCoroutine(hideRoutine);
+        hideRoutine = StartCoroutine(HideAfterDelay());
+    }
+
+    IEnumerator HideAfterDelay()
+    {
+        yield return new WaitForSeconds(2f);
+        HideImmediate();
+    }
+
+    void HideImmediate()
+    {
+        if (sr) sr.enabled = false;
     }
 
     void OnTriggerStay2D(Collider2D other)
