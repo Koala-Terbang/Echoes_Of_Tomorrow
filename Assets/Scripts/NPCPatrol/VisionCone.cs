@@ -4,8 +4,35 @@ using UnityEngine;
 
 public class VisionCone : MonoBehaviour
 {
-    public NPCChase npc;                // your existing chaser script
-    public LayerMask losMask;           // tick Player + Walls in Inspector
+    public NPCChase npc;
+    public LayerMask losMask;
+    private SpriteRenderer sr;
+    Coroutine hideRoutine;
+
+    void Awake()
+    {
+        sr = GetComponent<SpriteRenderer>();
+        HideImmediate();
+    }
+
+    public void Reveal()
+    {
+        sr.enabled = true;
+
+        if (hideRoutine != null) StopCoroutine(hideRoutine);
+        hideRoutine = StartCoroutine(HideAfterDelay());
+    }
+
+    IEnumerator HideAfterDelay()
+    {
+        yield return new WaitForSeconds(2f);
+        HideImmediate();
+    }
+
+    void HideImmediate()
+    {
+        if (sr) sr.enabled = false;
+    }
 
     void OnTriggerStay2D(Collider2D other)
     {
@@ -14,17 +41,16 @@ public class VisionCone : MonoBehaviour
         Vector2 from = npc.transform.position;
         Vector2 to   = other.transform.position;
 
-        // First thing between NPC and Player?
         RaycastHit2D hit = Physics2D.Linecast(from, to, losMask);
 
         if (hit.collider && hit.collider.CompareTag("Player"))
         {
-            npc.See(to);                // update + chase
+            npc.See(to);
             Debug.DrawLine(from, to, Color.green);
         }
         else
         {
-            npc.LostSight();            // blocked by wall → stop seeing
+            npc.LostSight();
             if (hit.collider) Debug.DrawLine(from, hit.point, Color.red);
         }
     }

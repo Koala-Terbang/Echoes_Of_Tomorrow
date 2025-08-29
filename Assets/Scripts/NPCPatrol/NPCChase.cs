@@ -99,9 +99,13 @@ public class NPCChase : MonoBehaviour
 
     Vector2 CurrentGoal(bool hasWps)
     {
-        if (sees && player != null) return player.position;
-        if (hasLastSeen)             return lastSeen;
-        if (hasWps)                  return waypoints[wp].position;
+        if (sees && player != null)
+            return player.position;
+        if (hasLastSeen)
+            return lastSeen;
+        if (hasWps)
+            return waypoints[wp].position;
+        
         return home;
     }
 

@@ -17,7 +17,6 @@ public class PlayerScan : MonoBehaviour
             nextScanTime = Time.time + scanCooldown;
         }
     }
-
     void DoScan()
     {
         Vector2 origin = transform.position;
@@ -27,6 +26,8 @@ public class PlayerScan : MonoBehaviour
         {
             var drone = hits[i].GetComponentInParent<DronePatrol>() ?? hits[i].GetComponent<DronePatrol>();
             if (drone) drone.Reveal();
+            var visualCone = hits[i].GetComponentInParent<VisionCone>() ?? hits[i].GetComponent<VisionCone>();
+            if (visualCone) visualCone.Reveal();
         }
     }
     void OnDrawGizmosSelected()
