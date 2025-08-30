@@ -6,7 +6,7 @@ using TMPro;
 
 public class DialogBubble : MonoBehaviour
 {
-    public TMP_Text text; // assign in inspector
+    public TMP_Text text;
 
     Coroutine routine;
 
@@ -15,7 +15,6 @@ public class DialogBubble : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-    // Show multiple lines one by one
     public void ShowLines(string[] lines, float lineDuration)
     {
         if (routine != null) StopCoroutine(routine);
