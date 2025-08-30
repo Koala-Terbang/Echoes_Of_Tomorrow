@@ -11,6 +11,11 @@ public class HidingSpot : MonoBehaviour
     public bool CanEnter() => occupant == null;
     public bool HasOccupant => occupant != null;
 
+    void Start()
+    {
+        hidePoint = GetComponent<Transform>();
+    }
+
     public void Enter(GameObject player)
     {
         occupant = player;

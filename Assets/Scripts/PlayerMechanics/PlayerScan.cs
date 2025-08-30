@@ -30,6 +30,8 @@ public class PlayerScan : MonoBehaviour
             if (visualCone) visualCone.Reveal();
             var camCone = hits[i].GetComponentInParent<CameraMechanics>() ?? hits[i].GetComponent<CameraMechanics>();
             if (camCone) camCone.Reveal();
+            var puzzle = hits[i].GetComponentInParent<PuzzleTile>() ?? hits[i].GetComponent<PuzzleTile>();
+            if (puzzle) puzzle.Reveal();
         }
     }
     void OnDrawGizmosSelected()
