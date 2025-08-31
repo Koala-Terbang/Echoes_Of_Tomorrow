@@ -46,11 +46,6 @@ public class CameraMechanics : MonoBehaviour
             for (int i = 0; i < responders.Length; i++)
                 if (responders[i]) responders[i].See(to);
         }
-        else
-        {
-            for (int i = 0; i < responders.Length; i++)
-                if (responders[i]) responders[i].LostSight();
-        }
     }
 
     void OnTriggerExit2D(Collider2D other)

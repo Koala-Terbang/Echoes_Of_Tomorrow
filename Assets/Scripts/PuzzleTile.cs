@@ -10,13 +10,15 @@ public class PuzzleTile : MonoBehaviour
     public float shownAlpha = 0.9f;
     public float holdTime = 1.0f;
     public float fadeTime = 0.3f;
+    private Transform tile;
+    public NPCChase[] responders;
 
     private Coroutine co;
 
     private void Awake()
     {
-        GetComponent<Collider2D>().isTrigger = true;
         if (highlight) SetAlpha(0f);
+        tile = GetComponent<Transform>();
     }
     public void Reveal()
     {
@@ -55,11 +57,16 @@ public class PuzzleTile : MonoBehaviour
     {
         if (!other.CompareTag("Player")) return;
 
-        if (!isCorrect && respawnPoint)
+        if (!isCorrect && respawnPoint != null)
         {
             var rb = other.attachedRigidbody;
             if (rb) rb.position = respawnPoint.position;
             else other.transform.position = respawnPoint.position;
+        }
+        else if (!isCorrect && responders != null)
+        {
+            for (int i = 0; i < responders.Length; i++)
+                if (responders[i]) responders[i].See(tile.position);
         }
     }
 }
