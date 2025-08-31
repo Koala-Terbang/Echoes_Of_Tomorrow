@@ -10,13 +10,15 @@ public class ButtonMech : MonoBehaviour
     private bool oneTime = true;
     private bool playerInside = false;
     private bool used = false;
-    public float animationTime;
+    private float animationTime = 2.5f;
+    public GameObject CoreCharge;
+    public string animationName;
+    private Animator anim;
 
-    void Reset()
+    void Awake()
     {
-        GetComponent<Collider2D>().isTrigger = true;
+        anim = CoreCharge.GetComponent<Animator>();
     }
-
     void Update()
     {
         if (playerInside && !used && Input.GetKeyDown(KeyCode.E))
@@ -45,7 +47,9 @@ public class ButtonMech : MonoBehaviour
     {
         mainCam.Priority = 5;
         bpCam.Priority = 10;
+        yield return new WaitForSeconds(1f);
         wall.SetActive(false);
+        anim.Play(animationName);
         yield return new WaitForSeconds(animationTime);
         mainCam.Priority = 10;
         bpCam.Priority = 5;

@@ -102,10 +102,10 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 81
+        width: 80
         height: 12
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -123,10 +123,10 @@ TextureImporter:
         serializedVersion: 2
         x: 81
         y: 0
-        width: 81
+        width: 80
         height: 12
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -144,10 +144,10 @@ TextureImporter:
         serializedVersion: 2
         x: 162
         y: 0
-        width: 81
+        width: 80
         height: 12
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -165,10 +165,10 @@ TextureImporter:
         serializedVersion: 2
         x: 243
         y: 0
-        width: 81
+        width: 80
         height: 12
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -186,10 +186,10 @@ TextureImporter:
         serializedVersion: 2
         x: 324
         y: 0
-        width: 81
+        width: 80
         height: 12
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -207,10 +207,10 @@ TextureImporter:
         serializedVersion: 2
         x: 405
         y: 0
-        width: 81
+        width: 80
         height: 12
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -228,10 +228,10 @@ TextureImporter:
         serializedVersion: 2
         x: 486
         y: 0
-        width: 81
+        width: 80
         height: 12
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -249,10 +249,10 @@ TextureImporter:
         serializedVersion: 2
         x: 567
         y: 0
-        width: 81
+        width: 80
         height: 12
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -270,10 +270,10 @@ TextureImporter:
         serializedVersion: 2
         x: 648
         y: 0
-        width: 81
+        width: 80
         height: 12
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -291,10 +291,10 @@ TextureImporter:
         serializedVersion: 2
         x: 729
         y: 0
-        width: 81
+        width: 80
         height: 12
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -312,10 +312,10 @@ TextureImporter:
         serializedVersion: 2
         x: 810
         y: 0
-        width: 81
+        width: 80
         height: 12
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -333,10 +333,10 @@ TextureImporter:
         serializedVersion: 2
         x: 891
         y: 0
-        width: 81
+        width: 80
         height: 12
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -344,6 +344,27 @@ TextureImporter:
       bones: []
       spriteID: 615c98843d4d83e40934412740c65416
       internalID: 289547937
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Biru_12
+      rect:
+        serializedVersion: 2
+        x: 972
+        y: 0
+        width: 80
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9ac8487fe53f4bd4dad4429b6de4a77a
+      internalID: -918895444
       vertices: []
       indices: 
       edges: []
@@ -363,6 +384,7 @@ TextureImporter:
       Biru_1: 2085627128
       Biru_10: 437348344
       Biru_11: 289547937
+      Biru_12: -918895444
       Biru_2: -1290808660
       Biru_3: -250267106
       Biru_4: -2084121448
