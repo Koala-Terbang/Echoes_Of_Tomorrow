@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
     public float moveSpeed = 5f;
     public Animator animator;
     public DeathScreen deathScreen;
+    public PCMinigame pc;
 
     Rigidbody2D rb;
     Vector2 movement;
@@ -50,12 +52,21 @@ public class PlayerMovement : MonoBehaviour
     {
         StartCoroutine(PlayerDeath());
     }
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (!other.CompareTag("Goal")) return;
+
+        if (pc == null) pc = FindObjectOfType<PCMinigame>();
+        if (pc != null) pc.finished = true;
+
+    SceneManager.UnloadSceneAsync("PCMinigame");
+    }
     IEnumerator PlayerDeath()
     {
         rb.velocity = Vector2.zero;
         this.enabled = false;
         animator.Play("DeathAnim");
         yield return new WaitForSeconds(1.3f);   
-        deathScreen.Show();    
+        if(deathScreen != null)deathScreen.Show();    
     }
 }

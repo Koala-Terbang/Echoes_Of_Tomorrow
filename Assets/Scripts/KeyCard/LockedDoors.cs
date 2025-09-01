@@ -13,6 +13,7 @@ public class LockedDoors : MonoBehaviour
     public GameObject interactUI;
     public DialogBubble bubble;
     public string[] lines;
+    public AudioClip openningSFX;
     bool onetime = true;
     bool opened;
     bool inside;
@@ -54,6 +55,7 @@ public class LockedDoors : MonoBehaviour
 
     void Open()
     {
+        AudioManager.I.PlaySFX(openningSFX);
         opened = true;
         if (animator) animator.SetBool("Open", true);
         if (doorBlocker) doorBlocker.enabled = false;
