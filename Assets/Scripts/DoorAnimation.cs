@@ -1,28 +1,33 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class DoorMechanics : MonoBehaviour
 {
-    public Animator animator;
-    void Reset()
-    {
-        if (!animator) animator = GetComponentInParent<Animator>();
-    }
+    private Animator animator;
+    int playersInside = 0;
 
+    void Awake()
+    {
+        animator = GetComponent<Animator>();
+    }
     void OnTriggerEnter2D(Collider2D other)
     {
-        SetOpen(true);
+        if (!other.CompareTag("Player")) return;
+        playersInside++;
+        if (playersInside == 1) SetOpen(true);
     }
 
     void OnTriggerExit2D(Collider2D other)
     {
-        SetOpen(false);
+        if (!other.CompareTag("Player")) return;
+        playersInside = Mathf.Max(0, playersInside - 1);
+        if (playersInside == 0) SetOpen(false);
     }
 
     void SetOpen(bool open)
     {
-        if (animator)
-            animator.SetBool("Open", open);
+        animator.SetBool("Open", open);
     }
 }

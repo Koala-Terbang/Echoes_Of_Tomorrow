@@ -4,14 +4,16 @@ using UnityEngine;
 
 public class NPCChase : MonoBehaviour
 {
-    private Transform player;
     public float patrolSpeed = 2f;
     public float chaseSpeed = 3.5f;
     public float arrive = 0.2f;
     public Transform[] waypoints;
     public float stuckTime = 3f;
     public float minMovePerSec = 0.02f;
+    private Animator animator;
+    public string animName;
 
+    Transform player;
     Rigidbody2D rb;
     Vector2 home;
     int wp = 0;
@@ -25,6 +27,7 @@ public class NPCChase : MonoBehaviour
     void Awake()
     {
         GameObject p = GameObject.FindGameObjectWithTag("Player");
+        animator = GetComponent<Animator>();
         player = p.transform;
         rb = GetComponent<Rigidbody2D>();
         rb.gravityScale = 0f;
@@ -58,6 +61,14 @@ public class NPCChase : MonoBehaviour
         StuckCheck(goal, hasWps);
 
         lastPos = transform.position;
+
+        if (animator)
+        {
+            if (rb.velocity.sqrMagnitude > 0.01f)
+                animator.Play(animName);
+            else
+                animator.Play("Idle");
+        }
     }
 
     void ChooseTargetAndSpeed(Vector2 pos, bool hasWps, out Vector2 target, out float speed)
@@ -75,7 +86,6 @@ public class NPCChase : MonoBehaviour
         {
             target = lastSeen;
             speed  = patrolSpeed;
-
             if (Vector2.SqrMagnitude(target - pos) <= arrive * arrive)
                 hasLastSeen = false;
             return;
@@ -85,7 +95,6 @@ public class NPCChase : MonoBehaviour
         {
             target = waypoints[wp].position;
             speed  = patrolSpeed;
-
             if (Vector2.SqrMagnitude(target - pos) <= arrive * arrive)
             {
                 wp = (wp + 1) % waypoints.Length;
@@ -93,19 +102,16 @@ public class NPCChase : MonoBehaviour
             }
             return;
         }
+
         target = home;
         speed  = patrolSpeed;
     }
 
     Vector2 CurrentGoal(bool hasWps)
     {
-        if (sees && player != null)
-            return player.position;
-        if (hasLastSeen)
-            return lastSeen;
-        if (hasWps)
-            return waypoints[wp].position;
-        
+        if (sees && player != null) return player.position;
+        if (hasLastSeen) return lastSeen;
+        if (hasWps) return waypoints[wp].position;
         return home;
     }
 
@@ -120,11 +126,9 @@ public class NPCChase : MonoBehaviour
         if (hasGoal && movePerSec < minMovePerSec)
         {
             stuckTimer += Time.fixedDeltaTime;
-
             if (stuckTimer >= stuckTime)
             {
                 Vector2 station = hasWps ? (Vector2)waypoints[wp].position : home;
-
                 transform.position = station;
                 rb.velocity = Vector2.zero;
 
@@ -135,9 +139,15 @@ public class NPCChase : MonoBehaviour
                 lastPos = transform.position;
             }
         }
-        else
+        else stuckTimer = 0f;
+    }
+    void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.collider.CompareTag("Player"))
         {
-            stuckTimer = 0f;
+            PlayerMovement pm = other.collider.GetComponent<PlayerMovement>();
+            pm.Die();
+            rb.velocity = Vector2.zero;
         }
     }
 

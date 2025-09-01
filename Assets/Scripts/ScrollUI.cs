@@ -7,20 +7,24 @@ public class ScrollUI : MonoBehaviour
 {
     public RectTransform root;
     public RectTransform clip;
-    public RectTransform paper;
     public TextMeshProUGUI text;
-    public float unravelTime = 0.6f;
-    public float typeSpeed = 40f;
-    public float afterDelay = 0.5f;
-    public bool closeOnAnyKey = true;
 
+    [Header("Timing")]
+    public float widenTime = 0.6f;
+    public float typeSpeed = 40f;
+
+    float targetWidth;
     float targetHeight;
     Coroutine co;
 
     void Awake()
     {
         if (root) root.gameObject.SetActive(false);
-        if (clip) targetHeight = clip.sizeDelta.y;
+        if (clip)
+        {
+            targetWidth = clip.sizeDelta.x;
+            targetHeight = clip.sizeDelta.y;
+        }
     }
 
     public void Show(string[] lines)
@@ -34,19 +38,19 @@ public class ScrollUI : MonoBehaviour
         if (!root) yield break;
         root.gameObject.SetActive(true);
         if (text) text.text = "";
-        if (clip) SetHeight(clip, 0f);
 
+        SetSize(clip, 0f, targetHeight);
+
+        // widen
         float t = 0f;
-        while (t < unravelTime)
+        while (t < widenTime)
         {
             t += Time.unscaledDeltaTime;
-            float h = Mathf.Lerp(0f, targetHeight, t / unravelTime);
-            if (clip) SetHeight(clip, h);
-            if (paper) SetHeight(paper, h);
+            float w = Mathf.Lerp(0f, targetWidth, t / widenTime);
+            SetSize(clip, w, targetHeight);
             yield return null;
         }
-        if (clip) SetHeight(clip, targetHeight);
-        if (paper) SetHeight(paper, targetHeight);
+        SetSize(clip, targetWidth, targetHeight);
 
         string full = (lines != null && lines.Length > 0) ? string.Join("\n", lines) : "";
         yield return StartCoroutine(TypeText(full));
@@ -65,14 +69,7 @@ public class ScrollUI : MonoBehaviour
         {
             i++;
             text.text = full.Substring(0, i);
-            yield return null;
-            float delay = 1f / Mathf.Max(1f, typeSpeed);
-            float t = 0f;
-            while (t < delay)
-            {
-                t += Time.unscaledDeltaTime;
-                yield return null;
-            }
+            yield return new WaitForSecondsRealtime(1f / Mathf.Max(1f, typeSpeed));
         }
     }
 
@@ -83,9 +80,9 @@ public class ScrollUI : MonoBehaviour
         if (root) root.gameObject.SetActive(false);
     }
 
-    static void SetHeight(RectTransform rt, float h)
+    static void SetSize(RectTransform rt, float w, float h)
     {
         var s = rt.sizeDelta;
-        rt.sizeDelta = new Vector2(s.x, h);
+        rt.sizeDelta = new Vector2(w, h);
     }
 }
