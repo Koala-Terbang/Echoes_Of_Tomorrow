@@ -24,12 +24,12 @@ public class PlayerMovement : MonoBehaviour
             Input.GetAxisRaw("Vertical")
         ).normalized;
 
-        if (movement.sqrMagnitude > 0.01f)
+        if (movement.sqrMagnitude > 0.1f)
             lastDir = movement;
 
         if (animator)
         {
-            if (movement.sqrMagnitude > 0.01f)
+            if (movement.sqrMagnitude > 0.1f)
                 animator.Play("Moving");
             else
                 animator.Play("Idle");

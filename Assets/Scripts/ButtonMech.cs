@@ -7,7 +7,6 @@ public class ButtonMech : MonoBehaviour
     public CinemachineVirtualCamera mainCam;
     public CinemachineVirtualCamera bpCam;
     public GameObject wall;
-    private bool oneTime = true;
     private bool playerInside = false;
     private bool used = false;
     private float animationTime = 2.5f;
@@ -15,6 +14,8 @@ public class ButtonMech : MonoBehaviour
     public string animationName;
     private Animator anim;
     public GameObject interactPrompt;
+    public CoreChaging core;
+    private PlayerMovement pm;
 
     void Awake()
     {
@@ -24,12 +25,10 @@ public class ButtonMech : MonoBehaviour
     {
         if (playerInside && !used && Input.GetKeyDown(KeyCode.E))
         {
-            if (wall)
-            {
-                interactPrompt.SetActive(false);
-                StartCoroutine(SwitchCam());
-            }
-            if (oneTime) used = true;
+            used = true;
+            interactPrompt.SetActive(false);
+            StartCoroutine(SwitchCam());
+            core.charges++;
         }
     }
 
@@ -37,7 +36,8 @@ public class ButtonMech : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            if(interactPrompt && !used) interactPrompt.SetActive(true);
+            pm = other.GetComponent<PlayerMovement>();
+            if (interactPrompt && !used) interactPrompt.SetActive(true);
             playerInside = true;
         }
     }
@@ -52,13 +52,16 @@ public class ButtonMech : MonoBehaviour
 
     private IEnumerator SwitchCam()
     {
+        pm.enabled = false;
         mainCam.Priority = 5;
         bpCam.Priority = 10;
         yield return new WaitForSeconds(2f);
-        wall.SetActive(false);
+        if (wall) wall.SetActive(false);
         anim.Play(animationName);
         yield return new WaitForSeconds(animationTime);
         mainCam.Priority = 10;
         bpCam.Priority = 5;
+        yield return new WaitForSeconds(2f);
+        pm.enabled = true;
     }
 }
