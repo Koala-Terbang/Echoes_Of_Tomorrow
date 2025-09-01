@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 38dee2871aea95a4cb3e8bdfe6441f97
+guid: ae51a34e35edb49479f52e127aee1587
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -97,12 +97,12 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Drone Normal_0
+      name: Character death_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 18
+        width: 34
         height: 26
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -111,19 +111,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4c68afa1fdc3ab4418155eb0761df968
-      internalID: -1650893775
+      spriteID: 729a6dcc900ac9f4d8a9fe4278e26ada
+      internalID: -330672228
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Drone Normal_1
+      name: Character death_1
       rect:
         serializedVersion: 2
-        x: 19
+        x: 34
         y: 0
-        width: 18
+        width: 34
         height: 26
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -132,19 +132,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 00d86ade2a0754c4287d21d78602082a
-      internalID: 676341808
+      spriteID: 28c9df64e8a51af418cfb4dff18e80f4
+      internalID: -1166336930
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Drone Normal_2
+      name: Character death_2
       rect:
         serializedVersion: 2
-        x: 38
+        x: 68
         y: 0
-        width: 18
+        width: 34
         height: 26
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -153,19 +153,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4e0c8cb24ed8be640959990788a6cfe1
-      internalID: 1707382568
+      spriteID: 9b70e8f26be01054a834d2c9026e86a6
+      internalID: -1882693447
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Drone Normal_3
+      name: Character death_3
       rect:
         serializedVersion: 2
-        x: 57
+        x: 102
         y: 0
-        width: 18
+        width: 34
         height: 26
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -174,8 +174,50 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 61213b5962c73964fb6a339ff6681a0e
-      internalID: -781174316
+      spriteID: 77ff0ab3812887a40a6e1479bd163004
+      internalID: 196963632
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Character death_4
+      rect:
+        serializedVersion: 2
+        x: 136
+        y: 0
+        width: 34
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a83163f995e945c41bd41225924d6955
+      internalID: -1088596225
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Character death_5
+      rect:
+        serializedVersion: 2
+        x: 170
+        y: 0
+        width: 34
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 21cea16f88c248149b474e2f62fb878c
+      internalID: -1169891647
       vertices: []
       indices: 
       edges: []
@@ -191,10 +233,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Drone Normal_0: -1650893775
-      Drone Normal_1: 676341808
-      Drone Normal_2: 1707382568
-      Drone Normal_3: -781174316
+      Character death_0: -330672228
+      Character death_1: -1166336930
+      Character death_2: -1882693447
+      Character death_3: 196963632
+      Character death_4: -1088596225
+      Character death_5: -1169891647
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

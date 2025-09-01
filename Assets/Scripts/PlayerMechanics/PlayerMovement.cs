@@ -5,22 +5,57 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public float moveSpeed = 5f;
-    private Rigidbody2D rb;
-    private Vector2 movement;
+    public Animator animator;
+    public DeathScreen deathScreen;
 
-    // Start is called before the first frame update
+    Rigidbody2D rb;
+    Vector2 movement;
+    Vector2 lastDir = Vector2.down;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        movement = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).normalized;
+        movement = new Vector2(
+            Input.GetAxisRaw("Horizontal"),
+            Input.GetAxisRaw("Vertical")
+        ).normalized;
+
+        if (movement.sqrMagnitude > 0.01f)
+            lastDir = movement;
+
+        if (animator)
+        {
+            if (movement.sqrMagnitude > 0.01f)
+                animator.Play("Moving");
+            else
+                animator.Play("Idle");
+        }
     }
+
     void FixedUpdate()
     {
         rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
+
+        if (lastDir.sqrMagnitude > 0.01f)
+        {
+            float angle = Mathf.Atan2(lastDir.y, lastDir.x) * Mathf.Rad2Deg - 90f;
+            rb.rotation = angle;
+        }
+    }
+    public void Die()
+    {
+        StartCoroutine(PlayerDeath());
+    }
+    IEnumerator PlayerDeath()
+    {
+        rb.velocity = Vector2.zero;
+        this.enabled = false;
+        animator.Play("DeathAnim");
+        yield return new WaitForSeconds(1.3f);   
+        deathScreen.Show();    
     }
 }

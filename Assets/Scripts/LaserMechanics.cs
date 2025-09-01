@@ -4,11 +4,10 @@ using UnityEngine;
 
 public class LaserMechanics : MonoBehaviour
 {
-    public DeathScreen deathScreen;
-
     void OnTriggerEnter2D(Collider2D other)
     {
         if (!other.CompareTag("Player")) return;
-        deathScreen.Show();
-    }
+        PlayerMovement pm = other.GetComponent<PlayerMovement>();
+        pm.Die();
+    }   
 }

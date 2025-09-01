@@ -17,7 +17,6 @@ public class HideIndicator : MonoBehaviour
 
     void Start()
     {
-        ShowPrompt(false);
         playerCollider = GetComponent<CircleCollider2D>();
         stealth = GetComponent<PlayerStealth>();
     }
@@ -25,6 +24,9 @@ public class HideIndicator : MonoBehaviour
     void Update()
     {
         ShowPrompt(!isHidden && nearbySpot && nearbySpot.CanEnter());
+
+        bool shouldShow = !isHidden && nearbySpot && nearbySpot.CanEnter();
+        ShowPrompt(shouldShow);
 
         if (Input.GetKeyDown(KeyCode.E))
         {
@@ -78,7 +80,10 @@ public class HideIndicator : MonoBehaviour
 
     void ShowPrompt(bool show)
     {
-        if (interactPrompt) interactPrompt.SetActive(show);
+        if (interactPrompt && interactPrompt.activeSelf != show)
+        {
+            interactPrompt.SetActive(show);
+        }
     }
 
     void OnTriggerEnter2D(Collider2D other)

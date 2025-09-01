@@ -14,6 +14,7 @@ public class ButtonMech : MonoBehaviour
     public GameObject CoreCharge;
     public string animationName;
     private Animator anim;
+    public GameObject interactPrompt;
 
     void Awake()
     {
@@ -25,6 +26,7 @@ public class ButtonMech : MonoBehaviour
         {
             if (wall)
             {
+                interactPrompt.SetActive(false);
                 StartCoroutine(SwitchCam());
             }
             if (oneTime) used = true;
@@ -34,20 +36,25 @@ public class ButtonMech : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
+        {
+            if(interactPrompt && !used) interactPrompt.SetActive(true);
             playerInside = true;
+        }
     }
-
     void OnTriggerExit2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
+        {
+            if(interactPrompt && !used) interactPrompt.SetActive(false);
             playerInside = false;
+        }
     }
 
     private IEnumerator SwitchCam()
     {
         mainCam.Priority = 5;
         bpCam.Priority = 10;
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(2f);
         wall.SetActive(false);
         anim.Play(animationName);
         yield return new WaitForSeconds(animationTime);
