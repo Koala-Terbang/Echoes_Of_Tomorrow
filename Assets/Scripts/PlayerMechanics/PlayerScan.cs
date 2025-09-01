@@ -8,6 +8,7 @@ public class PlayerScan : MonoBehaviour
     public LayerMask droneMask;
     public float scanCooldown = 2f;
     float nextScanTime = 0f;
+    public Animator anim;
 
     void Update()
     {
@@ -19,6 +20,7 @@ public class PlayerScan : MonoBehaviour
     }
     void DoScan()
     {
+        anim.Play("Scanning");
         Vector2 origin = transform.position;
         var hits = Physics2D.OverlapCircleAll(origin, scanRadius, droneMask);
 

@@ -34,7 +34,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -43,7 +43,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -95,7 +95,280 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: unggu_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 80
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 825324c5bb5bc7540a612d75f9fb21ba
+      internalID: 1515974100
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: unggu_1
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 0
+        width: 80
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 339b1d1baab0cff4997531d567ca88b2
+      internalID: -1454168586
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: unggu_2
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 0
+        width: 80
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d319a09d9e9aa17408fc57dd2f46f182
+      internalID: -1598609790
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: unggu_3
+      rect:
+        serializedVersion: 2
+        x: 243
+        y: 0
+        width: 80
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8a70650b73e284946a85e62834b4014a
+      internalID: -1122022574
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: unggu_4
+      rect:
+        serializedVersion: 2
+        x: 324
+        y: 0
+        width: 80
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0d9abbd326d886742af59a23fe14a348
+      internalID: -659094489
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: unggu_5
+      rect:
+        serializedVersion: 2
+        x: 405
+        y: 0
+        width: 80
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6c244495365dea047b496661c89b7f8c
+      internalID: 619867690
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: unggu_6
+      rect:
+        serializedVersion: 2
+        x: 486
+        y: 0
+        width: 80
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0181efa0ce86d47438f99383f5573d59
+      internalID: -387511652
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: unggu_7
+      rect:
+        serializedVersion: 2
+        x: 567
+        y: 0
+        width: 80
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2ea25f55471c7eb4a9792518ec9fc8df
+      internalID: 644566258
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: unggu_8
+      rect:
+        serializedVersion: 2
+        x: 648
+        y: 0
+        width: 80
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8010dbc966f65584ea5b6bf718711c4a
+      internalID: -1531444039
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: unggu_9
+      rect:
+        serializedVersion: 2
+        x: 729
+        y: 0
+        width: 80
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b8f751b0492c87b40a128714fe468c89
+      internalID: -592719844
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: unggu_10
+      rect:
+        serializedVersion: 2
+        x: 810
+        y: 0
+        width: 80
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 62e4813448463bf43b4cccd93ad85b3d
+      internalID: -723513922
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: unggu_11
+      rect:
+        serializedVersion: 2
+        x: 891
+        y: 0
+        width: 80
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e497dd39a8a54ad41a4960c2a00b22d3
+      internalID: 1258701443
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: unggu_12
+      rect:
+        serializedVersion: 2
+        x: 972
+        y: 0
+        width: 80
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 72b9c74c0dcd8254397fc3186b899424
+      internalID: -1283276230
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -106,7 +379,20 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      unggu_0: 1515974100
+      unggu_1: -1454168586
+      unggu_10: -723513922
+      unggu_11: 1258701443
+      unggu_12: -1283276230
+      unggu_2: -1598609790
+      unggu_3: -1122022574
+      unggu_4: -659094489
+      unggu_5: 619867690
+      unggu_6: -387511652
+      unggu_7: 644566258
+      unggu_8: -1531444039
+      unggu_9: -592719844
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

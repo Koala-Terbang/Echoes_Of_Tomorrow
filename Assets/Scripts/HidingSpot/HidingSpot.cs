@@ -5,8 +5,7 @@ using UnityEngine;
 public class HidingSpot : MonoBehaviour
 {
     public Transform hidePoint;
-    // public string openTrigger = "Open";
-    // public string closeTrigger = "Close";
+    private Animator animator;
     GameObject occupant;
     public bool CanEnter() => occupant == null;
     public bool HasOccupant => occupant != null;
@@ -14,17 +13,18 @@ public class HidingSpot : MonoBehaviour
     void Start()
     {
         hidePoint = GetComponent<Transform>();
+        animator = GetComponent<Animator>();
     }
 
     public void Enter(GameObject player)
     {
+        animator.Play("Locker");
         occupant = player;
-        // if (animator && !string.IsNullOrEmpty(openTrigger)) animator.SetTrigger(openTrigger);
     }
 
     public void Exit(GameObject player)
     {
+        animator.Play("Locker");
         if (occupant == player) occupant = null;
-        // if (animator && !string.IsNullOrEmpty(closeTrigger)) animator.SetTrigger(closeTrigger);
     }
 }

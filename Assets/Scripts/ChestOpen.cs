@@ -9,6 +9,7 @@ public class ChestOpen : MonoBehaviour
 
     bool playerInside;
     bool opened;
+    public GameObject ChestUI;
 
     void Reset() => GetComponent<Collider2D>().isTrigger = true;
 
@@ -31,6 +32,7 @@ public class ChestOpen : MonoBehaviour
         {
             opened = true;
             scrollUI.Show(lines);
+            ChestUI.SetActive(true);
         }
     }
 }
