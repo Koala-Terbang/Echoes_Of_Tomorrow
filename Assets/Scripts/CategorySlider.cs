@@ -4,12 +4,11 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class NewBehaviourScript : MonoBehaviour
+public class CategorySlider : MonoBehaviour
 {
     [System.Serializable]
     public class Entry
     {
-        public string title;
         public Sprite image;
         [TextArea] public string description;
     }
@@ -22,7 +21,6 @@ public class NewBehaviourScript : MonoBehaviour
     public Category[] categories;
 
     public Image imageUI;
-    public TMP_Text titleUI;
     public TMP_Text descUI;
 
     int cat = 0;
@@ -64,13 +62,11 @@ public class NewBehaviourScript : MonoBehaviour
         {
             imageUI.sprite = null;
             descUI.text = "";
-            if (titleUI) titleUI.text = "";
             return;
         }
 
         var e = list[Mathf.Clamp(i, 0, list.Length - 1)];
         if (imageUI) imageUI.sprite = e.image;
-        if (titleUI) titleUI.text = string.IsNullOrEmpty(e.title) ? categories[c].name : e.title;
         if (descUI)  descUI.text  = e.description ?? "";
     }
 }
