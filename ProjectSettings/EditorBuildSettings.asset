@@ -6,9 +6,18 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/MainMenu.unity
+    guid: 4d02d4e31a21b7849b473911e5a21cce
+  - enabled: 1
+    path: Assets/Scenes/IntroDialog.unity
+    guid: 5220e4e0e0e99a743915f9709f4dadf0
+  - enabled: 1
     path: Assets/Scenes/MainScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
     path: Assets/Scenes/PCMinigame.unity
     guid: d1189cb13c830de47bbecaeeff07b052
+  - enabled: 1
+    path: Assets/Scenes/OutroDialog.unity
+    guid: c8edb8de6647a0646ab0dccea28aecc9
   m_configObjects: {}
