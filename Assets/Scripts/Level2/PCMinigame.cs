@@ -14,6 +14,7 @@ public class PCMinigame : MonoBehaviour
     public CinemachineVirtualCamera mainCam;
     public CinemachineVirtualCamera bpCam;
     public Animator anim;
+    public CoreChaging core;
     bool oneTime = false;
     void OnTriggerEnter2D(Collider2D collider)
     {
@@ -55,6 +56,7 @@ public class PCMinigame : MonoBehaviour
         }
         if (finished && !oneTime)
         {
+            core.charges++;
             StartCoroutine(SwitchCam());
             oneTime = true;
         }
