@@ -9,12 +9,14 @@ public class PlayerScan : MonoBehaviour
     public float scanCooldown = 2f;
     float nextScanTime = 0f;
     public Animator anim;
+    public ScanCDUI scanUI;
 
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Q) && Time.time >= nextScanTime)
         {
             DoScan();
+            scanUI.Begin(scanCooldown);
             nextScanTime = Time.time + scanCooldown;
         }
     }

@@ -9,18 +9,27 @@ public class ChestOpen : MonoBehaviour
 
     bool playerInside;
     bool opened;
+    public GameObject interactUI;
     public GameObject ChestUI;
-
-    void Reset() => GetComponent<Collider2D>().isTrigger = true;
+    public string[] AiLine;
+    public DialogBubble bubble;
+    public AudioClip openingSFX;
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player")) playerInside = true;
+        if (other.CompareTag("Player") && !opened)
+        {
+            playerInside = true;
+            interactUI.SetActive(true);
+        }
     }
-
     void OnTriggerExit2D(Collider2D other)
     {
-        if (other.CompareTag("Player")) playerInside = false;
+        if (other.CompareTag("Player"))
+        {
+            playerInside = false;
+            interactUI.SetActive(false);
+        }
     }
 
     void Update()
@@ -30,6 +39,8 @@ public class ChestOpen : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.E))
         {
+            AudioManager.I.PlaySFX(openingSFX);
+            if (bubble != null) bubble.ShowLines(AiLine, 3f);
             opened = true;
             scrollUI.Show(lines);
             ChestUI.SetActive(true);

@@ -6,6 +6,7 @@ using UnityEngine;
 public class DoorMechanics : MonoBehaviour
 {
     private Animator animator;
+    public AudioClip openningSFX;
     int playersInside = 0;
 
     void Awake()
@@ -28,6 +29,7 @@ public class DoorMechanics : MonoBehaviour
 
     void SetOpen(bool open)
     {
+        AudioManager.I.PlaySFX(openningSFX);
         animator.SetBool("Open", open);
     }
 }

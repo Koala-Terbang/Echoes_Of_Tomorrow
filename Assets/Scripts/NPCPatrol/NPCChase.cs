@@ -9,7 +9,7 @@ public class NPCChase : MonoBehaviour
     public float arrive = 0.2f;
     public Transform[] waypoints;
     public float stuckTime = 3f;
-    public float minMovePerSec = 0.02f;
+    public float minMovePerSec = 0.1f;
     private Animator animator;
     public string animName;
 

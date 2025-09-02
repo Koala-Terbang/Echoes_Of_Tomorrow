@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class LockedDoors : MonoBehaviour
@@ -10,7 +11,10 @@ public class LockedDoors : MonoBehaviour
     public Collider2D doorBlocker;
     public GameObject doorVisual;
     public GameObject interactUI;
-
+    public DialogBubble bubble;
+    public string[] lines;
+    public AudioClip openningSFX;
+    bool onetime = true;
     bool opened;
     bool inside;
     PlayerKeys inv;
@@ -37,12 +41,21 @@ public class LockedDoors : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E))
         {
             bool ok = consumeKey ? inv.Use(requiredKeyId) : inv.Has(requiredKeyId);
-            if (ok) Open();
+            if (ok)
+            {
+                Open();
+            }
+            else if (bubble != null && onetime)
+            {
+                onetime = false;
+                bubble.ShowLines(lines, 3f);
+            }
         }
     }
 
     void Open()
     {
+        AudioManager.I.PlaySFX(openningSFX);
         opened = true;
         if (animator) animator.SetBool("Open", true);
         if (doorBlocker) doorBlocker.enabled = false;
