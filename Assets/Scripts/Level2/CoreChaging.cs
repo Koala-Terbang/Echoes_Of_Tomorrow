@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
+using UnityEngine.SceneManagement;
 
 public class CoreChaging : MonoBehaviour
 {
@@ -54,9 +55,7 @@ public class CoreChaging : MonoBehaviour
         yield return new WaitForSeconds(2f);
         anim.Play("FinishCharging");
         yield return new WaitForSeconds(2.5f);
-        mainCam.Priority = 10;
-        bpCam.Priority = 5;
-        pm.enabled = true;
+        SceneManager.LoadScene("OutroDialog");
     }
 
 

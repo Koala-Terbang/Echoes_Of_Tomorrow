@@ -10,6 +10,7 @@ public class PlayerScan : MonoBehaviour
     float nextScanTime = 0f;
     public Animator anim;
     public ScanCDUI scanUI;
+    public AudioClip SFX;
 
     void Update()
     {
@@ -23,6 +24,7 @@ public class PlayerScan : MonoBehaviour
     void DoScan()
     {
         anim.Play("Scanning");
+        AudioManager.I.PlaySFX(SFX);
         Vector2 origin = transform.position;
         var hits = Physics2D.OverlapCircleAll(origin, scanRadius, droneMask);
 

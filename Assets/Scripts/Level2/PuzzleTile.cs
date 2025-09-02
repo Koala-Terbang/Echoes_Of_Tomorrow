@@ -12,7 +12,7 @@ public class PuzzleTile : MonoBehaviour
     public float fadeTime = 0.3f;
     private Transform tile;
     public NPCChase[] responders;
-
+    public AudioClip falseTileSFX;
     private Coroutine co;
 
     private void Awake()
@@ -59,9 +59,9 @@ public class PuzzleTile : MonoBehaviour
 
         if (!isCorrect && respawnPoint != null)
         {
+            AudioManager.I.PlaySFX(falseTileSFX);
             var rb = other.attachedRigidbody;
-            if (rb) rb.position = respawnPoint.position;
-            else other.transform.position = respawnPoint.position;
+            rb.position = respawnPoint.position;
         }
         else if (!isCorrect && responders != null)
         {

@@ -16,6 +16,7 @@ public class ButtonMech : MonoBehaviour
     public GameObject interactPrompt;
     public CoreChaging core;
     private PlayerMovement pm;
+    public AudioClip ChargeSFX;
 
     void Awake()
     {
@@ -57,6 +58,7 @@ public class ButtonMech : MonoBehaviour
         bpCam.Priority = 10;
         yield return new WaitForSeconds(2f);
         if (wall) wall.SetActive(false);
+        AudioManager.I.PlaySFX(ChargeSFX);
         anim.Play(animationName);
         yield return new WaitForSeconds(animationTime);
         mainCam.Priority = 10;

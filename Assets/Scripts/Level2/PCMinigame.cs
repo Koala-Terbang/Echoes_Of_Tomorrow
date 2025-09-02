@@ -15,6 +15,7 @@ public class PCMinigame : MonoBehaviour
     public CinemachineVirtualCamera bpCam;
     public Animator anim;
     public CoreChaging core;
+    public AudioClip SFX;
     bool oneTime = false;
     void OnTriggerEnter2D(Collider2D collider)
     {
@@ -37,6 +38,7 @@ public class PCMinigame : MonoBehaviour
         mainCam.Priority = 5;
         bpCam.Priority = 10;
         yield return new WaitForSeconds(2f);
+        AudioManager.I.PlaySFX(SFX);
         anim.Play("PurpleCoreCharge");
         yield return new WaitForSeconds(2.5f);
         mainCam.Priority = 10;
