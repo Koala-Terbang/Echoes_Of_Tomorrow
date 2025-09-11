@@ -17,6 +17,7 @@ public class PCMinigame : MonoBehaviour
     public CoreChaging core;
     public AudioClip SFX;
     bool oneTime = false;
+    bool played = false;
     void OnTriggerEnter2D(Collider2D collider)
     {
         if (collider.CompareTag("Player") && !finished)
@@ -49,11 +50,12 @@ public class PCMinigame : MonoBehaviour
     }
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E) && inside && !finished)
+        if (Input.GetKeyDown(KeyCode.E) && inside && !finished && !played)
         {
             ps.enabled = false;
             pm.enabled = false;
             interactUI.SetActive(false);
+            played = true;
             SceneManager.LoadScene("PCMinigame", LoadSceneMode.Additive);
         }
         if (finished && !oneTime)
