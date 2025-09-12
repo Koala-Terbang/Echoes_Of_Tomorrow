@@ -14,6 +14,7 @@ public class ChestOpen : MonoBehaviour
     public string[] AiLine;
     public DialogBubble bubble;
     public AudioClip openingSFX;
+    public PlayerMovement pm;
 
     void OnTriggerEnter2D(Collider2D other)
     {
@@ -40,6 +41,7 @@ public class ChestOpen : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E))
         {
             AudioManager.I.PlaySFX(openingSFX);
+            pm.enabled = false;
             if (bubble != null) bubble.ShowLines(AiLine, 3f);
             opened = true;
             scrollUI.Show(lines);

@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
     public Animator animator;
     public DeathScreen deathScreen;
     public PCMinigame pc;
+    public bool level2 = false;
 
     Rigidbody2D rb;
     Vector2 movement;
@@ -52,6 +53,10 @@ public class PlayerMovement : MonoBehaviour
     {
         StartCoroutine(PlayerDeath());
     }
+    public void Respawn()
+    {
+        StartCoroutine(PlayerRespawn());
+    }
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (!other.CompareTag("Goal")) return;
@@ -59,14 +64,24 @@ public class PlayerMovement : MonoBehaviour
         if (pc == null) pc = FindObjectOfType<PCMinigame>();
         if (pc != null) pc.finished = true;
 
-    SceneManager.UnloadSceneAsync("PCMinigame");
+        SceneManager.UnloadSceneAsync("PCMinigame");
     }
     IEnumerator PlayerDeath()
     {
         rb.velocity = Vector2.zero;
         this.enabled = false;
         animator.Play("DeathAnim");
-        yield return new WaitForSeconds(1.3f);   
-        if(deathScreen != null)deathScreen.Show();    
+        yield return new WaitForSeconds(1.3f);
+        deathScreen.Show();
+        yield return new WaitForSeconds(0.1f);
+        Time.timeScale = 0;
+
+    }
+    IEnumerator PlayerRespawn()
+    {
+        rb.velocity = Vector2.zero;
+        animator.Play("Respawn");
+        yield return new WaitForSeconds(1.3f);
+        this.enabled = true;
     }
 }

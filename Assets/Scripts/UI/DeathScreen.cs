@@ -6,17 +6,23 @@ using UnityEngine.SceneManagement;
 public class DeathScreen : MonoBehaviour
 {
     public GameObject root;
+    public Transform respawnPoint1;
+    public Transform respawnPoint2;
+    public Transform player;
+    PlayerMovement pm;
 
     bool showing;
 
+    void Awake()
+    {
+        pm = player.GetComponent<PlayerMovement>();
+    }
     public void Show()
     {
         if (showing) return;
         showing = true;
 
         root.SetActive(true);
-
-        Time.timeScale = 0f;
     }
 
     public void Hide()
@@ -29,8 +35,12 @@ public class DeathScreen : MonoBehaviour
 
     public void RestartLevel()
     {
+        Hide();
+        if (pm.level2)
+            player.position = respawnPoint2.position;
+        else
+            player.position = respawnPoint1.position;
         Time.timeScale = 1f;
-        Scene current = SceneManager.GetActiveScene();
-        SceneManager.LoadScene(current.buildIndex);
+        pm.Respawn();
     }
 }

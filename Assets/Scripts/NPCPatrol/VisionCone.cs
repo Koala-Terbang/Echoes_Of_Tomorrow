@@ -6,18 +6,17 @@ public class VisionCone : MonoBehaviour
 {
     public NPCChase npc;
     public LayerMask losMask;
-    private SpriteRenderer sr;
+    public GameObject sr;
     Coroutine hideRoutine;
 
     void Awake()
     {
-        sr = GetComponent<SpriteRenderer>();
         HideImmediate();
     }
 
     public void Reveal()
     {
-        sr.enabled = true;
+        sr.SetActive(true);
 
         if (hideRoutine != null) StopCoroutine(hideRoutine);
         hideRoutine = StartCoroutine(HideAfterDelay());
@@ -31,7 +30,7 @@ public class VisionCone : MonoBehaviour
 
     void HideImmediate()
     {
-        if (sr) sr.enabled = false;
+        if(sr != null) sr.SetActive(false);
     }
 
     void OnTriggerStay2D(Collider2D other)

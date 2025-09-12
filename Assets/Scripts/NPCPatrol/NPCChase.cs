@@ -23,6 +23,7 @@ public class NPCChase : MonoBehaviour
 
     Vector2 lastPos;
     float stuckTimer = 0f;
+    bool hasWps;
 
     void Awake()
     {
@@ -40,7 +41,7 @@ public class NPCChase : MonoBehaviour
     void FixedUpdate()
     {
         Vector2 pos = rb.position;
-        bool hasWps = waypoints != null && waypoints.Length > 0;
+        hasWps = waypoints != null && waypoints.Length > 0;
 
         Vector2 target;
         float speed;
@@ -76,7 +77,7 @@ public class NPCChase : MonoBehaviour
         if (sees && player != null)
         {
             target = player.position;
-            speed  = chaseSpeed;
+            speed = chaseSpeed;
             lastSeen = target;
             hasLastSeen = true;
             return;
@@ -85,7 +86,7 @@ public class NPCChase : MonoBehaviour
         if (hasLastSeen)
         {
             target = lastSeen;
-            speed  = patrolSpeed;
+            speed = patrolSpeed;
             if (Vector2.SqrMagnitude(target - pos) <= arrive * arrive)
                 hasLastSeen = false;
             return;
@@ -94,7 +95,7 @@ public class NPCChase : MonoBehaviour
         if (hasWps)
         {
             target = waypoints[wp].position;
-            speed  = patrolSpeed;
+            speed = patrolSpeed;
             if (Vector2.SqrMagnitude(target - pos) <= arrive * arrive)
             {
                 wp = (wp + 1) % waypoints.Length;
@@ -104,7 +105,7 @@ public class NPCChase : MonoBehaviour
         }
 
         target = home;
-        speed  = patrolSpeed;
+        speed = patrolSpeed;
     }
 
     Vector2 CurrentGoal(bool hasWps)
@@ -128,18 +129,22 @@ public class NPCChase : MonoBehaviour
             stuckTimer += Time.fixedDeltaTime;
             if (stuckTimer >= stuckTime)
             {
-                Vector2 station = hasWps ? (Vector2)waypoints[wp].position : home;
-                transform.position = station;
-                rb.velocity = Vector2.zero;
-
-                sees = false;
-                hasLastSeen = false;
-
-                stuckTimer = 0f;
-                lastPos = transform.position;
+                Teleport(hasWps);
             }
         }
         else stuckTimer = 0f;
+    }
+    void Teleport(bool hasWps)
+    {
+        Vector2 station = hasWps ? (Vector2)waypoints[wp].position : home;
+        transform.position = station;
+        rb.velocity = Vector2.zero;
+
+        sees = false;
+        hasLastSeen = false;
+
+        stuckTimer = 0f;
+        lastPos = transform.position;
     }
     void OnCollisionEnter2D(Collision2D other)
     {
@@ -147,7 +152,7 @@ public class NPCChase : MonoBehaviour
         {
             PlayerMovement pm = other.collider.GetComponent<PlayerMovement>();
             pm.Die();
-            rb.velocity = Vector2.zero;
+            StartCoroutine(RespawnTeleport());
         }
     }
 
@@ -161,5 +166,10 @@ public class NPCChase : MonoBehaviour
     public void LostSight()
     {
         sees = false;
+    }
+    IEnumerator RespawnTeleport()
+    {
+        yield return new WaitForSeconds(1.3f);
+        Teleport(hasWps);
     }
 }

@@ -9,9 +9,10 @@ public class ScrollUI : MonoBehaviour
     public RectTransform clip;
     public TextMeshProUGUI text;
 
-    [Header("Timing")]
     public float widenTime = 0.6f;
     public float typeSpeed = 40f;
+
+    public PlayerMovement pm;
 
     float targetWidth;
     float targetHeight;
@@ -41,7 +42,6 @@ public class ScrollUI : MonoBehaviour
 
         SetSize(clip, 0f, targetHeight);
 
-        // widen
         float t = 0f;
         while (t < widenTime)
         {
@@ -57,6 +57,7 @@ public class ScrollUI : MonoBehaviour
 
         yield return new WaitUntil(() => Input.anyKeyDown);
         Hide();
+        pm.enabled = true;
         co = null;
     }
 

@@ -5,7 +5,7 @@ using UnityEngine;
 public class DronePatrol : MonoBehaviour
 {
     public float revealDuration = 2f;
-    public SpriteRenderer srCone;
+    public GameObject srCone;
 
     SpriteRenderer sr;
     Coroutine hideRoutine;
@@ -19,7 +19,7 @@ public class DronePatrol : MonoBehaviour
     public void Reveal()
     {
         sr.enabled = true;
-        srCone.enabled = true;
+        srCone.SetActive(true);
 
         if (hideRoutine != null) StopCoroutine(hideRoutine);
         hideRoutine = StartCoroutine(HideAfterDelay());
@@ -34,6 +34,6 @@ public class DronePatrol : MonoBehaviour
     void HideImmediate()
     {
         if (sr) sr.enabled = false;
-        srCone.enabled = false;
+        srCone.SetActive(false);
     }
 }
