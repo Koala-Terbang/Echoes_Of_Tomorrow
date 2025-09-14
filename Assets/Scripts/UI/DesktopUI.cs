@@ -7,6 +7,6 @@ public class DesktopUI : MonoBehaviour
 {
     public void Dispatch()
     {
-        SceneManager.LoadScene("TutorialScene");
+        SceneManager.LoadScene("MainScene");
     }
 }
