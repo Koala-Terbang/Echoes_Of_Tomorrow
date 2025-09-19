@@ -16,6 +16,8 @@ public class PCMinigame : MonoBehaviour
     public Animator anim;
     public CoreChaging core;
     public AudioClip SFX;
+    public ObjectivePointer objectivePointer;
+    public int index;
     bool oneTime = false;
     bool played = false;
     void OnTriggerEnter2D(Collider2D collider)
@@ -62,6 +64,7 @@ public class PCMinigame : MonoBehaviour
         {
             core.charges++;
             StartCoroutine(SwitchCam());
+            objectivePointer.CompleteObjective(index);
             oneTime = true;
         }
         

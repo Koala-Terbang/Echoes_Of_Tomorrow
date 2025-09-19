@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class LockedDoors : MonoBehaviour
 {
-     public string requiredKeyId;
+    public string requiredKeyId;
     public bool consumeKey = true;
     public Animator animator;
     public Collider2D doorBlocker;
@@ -14,6 +14,7 @@ public class LockedDoors : MonoBehaviour
     public DialogBubble bubble;
     public string[] lines;
     public AudioClip openningSFX;
+    public ObjectivePointer objectivePointer;
     bool onetime = true;
     bool opened;
     bool inside;

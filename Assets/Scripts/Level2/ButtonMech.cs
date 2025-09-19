@@ -17,6 +17,8 @@ public class ButtonMech : MonoBehaviour
     public CoreChaging core;
     private PlayerMovement pm;
     public AudioClip ChargeSFX;
+    public ObjectivePointer objectivePointer;
+    public int index;
 
     void Awake()
     {
@@ -29,6 +31,7 @@ public class ButtonMech : MonoBehaviour
             used = true;
             interactPrompt.SetActive(false);
             StartCoroutine(SwitchCam());
+            objectivePointer.CompleteObjective(index);
             core.charges++;
         }
     }

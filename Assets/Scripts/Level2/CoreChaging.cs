@@ -14,6 +14,8 @@ public class CoreChaging : MonoBehaviour
     private bool inside;
     private bool used;
     private PlayerMovement pm;
+    public ObjectivePointer objectivePointer;
+    public int index;
     void Awake()
     {
         anim = GetComponent<Animator>();
@@ -27,6 +29,7 @@ public class CoreChaging : MonoBehaviour
         {
             interactUI.SetActive(false);
             StartCoroutine(SwitchCam());
+            objectivePointer.CompleteObjective(index);
         }
     }
     void OnTriggerEnter2D(Collider2D collision)
@@ -57,6 +60,4 @@ public class CoreChaging : MonoBehaviour
         yield return new WaitForSeconds(2.5f);
         SceneManager.LoadScene("OutroDialog");
     }
-
-
 }
