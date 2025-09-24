@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DronePatrol : MonoBehaviour
 {
-    public float revealDuration = 2f;
+    private float revealDuration = 5f;
     public GameObject srCone;
 
     SpriteRenderer sr;

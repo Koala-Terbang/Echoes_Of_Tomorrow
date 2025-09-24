@@ -18,10 +18,12 @@ public class PauseMenu : MonoBehaviour
     public void openPause()
     {
         pause.SetActive(true);
+        Time.timeScale = 0f;
     }
     public void closePause()
     {
         pause.SetActive(false);
+        Time.timeScale = 1f;
     }
     public void openSettings()
     {

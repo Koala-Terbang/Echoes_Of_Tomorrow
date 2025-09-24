@@ -60,7 +60,7 @@ public class PlayerMovement : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (!other.CompareTag("Goal")) return;
-
+        
         if (pc == null) pc = FindObjectOfType<PCMinigame>();
         if (pc != null) pc.finished = true;
 
