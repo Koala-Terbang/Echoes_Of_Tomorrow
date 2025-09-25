@@ -9,12 +9,12 @@ public class DialogBubble : MonoBehaviour
     public TMP_Text text;
 
     Coroutine routine;
-    public Animator animator;
+    public Image image;
 
     void Awake()
     {
         gameObject.SetActive(false);
-        animator.enabled = false;
+        image.enabled = true;
     }
 
     public void ShowLines(string[] lines, float lineDuration)
@@ -26,7 +26,7 @@ public class DialogBubble : MonoBehaviour
 
     IEnumerator ShowRoutine(string[] lines, float lineDuration)
     {
-        animator.enabled = true;
+        image.enabled = false;
         foreach (var line in lines)
         {
             text.text = line;
@@ -38,7 +38,7 @@ public class DialogBubble : MonoBehaviour
     public void Hide()
     {
         if (routine != null) StopCoroutine(routine);
-        animator.enabled = false;
+        image.enabled = true;
         routine = null;
         gameObject.SetActive(false);
     }
