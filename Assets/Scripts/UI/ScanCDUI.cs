@@ -6,8 +6,8 @@ using TMPro;
 
 public class ScanCDUI : MonoBehaviour
 {
-    public Image fill;
     public TMP_Text label;
+    public GameObject panel;
 
     float timeLeft;
     float duration;
@@ -23,31 +23,29 @@ public class ScanCDUI : MonoBehaviour
         gameObject.SetActive(true);
     }
 
-    public void ResetReady()
+    void Awake()
     {
         cooling = false;
         timeLeft = 0f;
-        if (fill)  fill.fillAmount = 1f;
-        if (label) label.text = "READY";
-    }
-
-    void Awake()
-    {
-        ResetReady();
+        label.text = "READY";
+        panel.SetActive(false);
     }
 
     void Update()
     {
         if (!cooling)
         {
-            if (fill)  fill.fillAmount = 1f;
             if (label) label.text = "READY";
+            panel.SetActive(false);
             return;
+        }
+        else if (cooling)
+        {
+            panel.SetActive(true);
         }
 
         timeLeft -= Time.unscaledDeltaTime;
         float p = Mathf.Clamp01(1f - (timeLeft / duration));
-        if (fill)  fill.fillAmount = p;
         if (label) label.text = Mathf.CeilToInt(Mathf.Max(0f, timeLeft)).ToString();
 
         if (timeLeft <= 0f) cooling = false;

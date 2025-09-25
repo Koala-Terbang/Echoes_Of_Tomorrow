@@ -6,7 +6,7 @@ public class PlayerScan : MonoBehaviour
 {
     public float scanRadius = 6f;
     public LayerMask droneMask;
-    public float scanCooldown = 2f;
+    private float scanCooldown = 4f;
     float nextScanTime = 0f;
     public Animator anim;
     public ScanCDUI scanUI;
