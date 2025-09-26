@@ -10,6 +10,7 @@ public class PlayerMovement : MonoBehaviour
     public DeathScreen deathScreen;
     public PCMinigame pc;
     public bool level2 = false;
+    private HideIndicator hideIndicator;
 
     Rigidbody2D rb;
     Vector2 movement;
@@ -18,6 +19,7 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        hideIndicator = GetComponent<HideIndicator>();
     }
 
     void Update()
@@ -69,6 +71,7 @@ public class PlayerMovement : MonoBehaviour
     IEnumerator PlayerDeath()
     {
         rb.velocity = Vector2.zero;
+        hideIndicator.enabled = false;
         this.enabled = false;
         animator.Play("DeathAnim");
         yield return new WaitForSeconds(1.3f);
@@ -79,6 +82,7 @@ public class PlayerMovement : MonoBehaviour
     }
     IEnumerator PlayerRespawn()
     {
+        hideIndicator.enabled = true;
         rb.velocity = Vector2.zero;
         animator.Play("Respawn");
         yield return new WaitForSeconds(1.3f);

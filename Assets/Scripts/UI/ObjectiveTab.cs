@@ -4,14 +4,12 @@ using UnityEngine;
 
 public class ObjectiveTab : MonoBehaviour
 {
-    public GameObject tabPanel;
+    public Animator animTab;
+    public GameObject objectiveTab;
     public List<GameObject> objectives = new List<GameObject>();
     public ObjectivePointer objectivePointer;
+    bool animPlaying = false;
 
-    void Start()
-    {
-        tabPanel.SetActive(false);
-    }
     void Update()
     {
         foreach (GameObject obj in objectives)
@@ -26,7 +24,29 @@ public class ObjectiveTab : MonoBehaviour
     }
     public void ToggleObjective()
     {
-        bool isActive = tabPanel.activeSelf;
-        tabPanel.SetActive(!isActive);
+        if (!objectiveTab.activeSelf && !animPlaying)
+        {
+            StartCoroutine(OpenObjective());
+        }
+        else if (objectiveTab.activeSelf && !animPlaying)
+        {
+            StartCoroutine(CloseObjective());
+        }
+    }
+    IEnumerator OpenObjective()
+    {
+        animPlaying = true;
+        animTab.Play("ObjectiveOpenn");
+        yield return new WaitForSeconds(0.4f);
+        objectiveTab.SetActive(true);
+        animPlaying = false;
+    }
+    IEnumerator CloseObjective()
+    {
+        animPlaying = true;
+        objectiveTab.SetActive(false);
+        animTab.Play("ObjectiveClose");
+        yield return new WaitForSeconds(0.4f);
+        animPlaying = false;
     }
 }
