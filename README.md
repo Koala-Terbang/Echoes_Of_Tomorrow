@@ -9,7 +9,11 @@
   </tr>
 </table>
 
-##  Runner Up GameToday 2025
+#### 🏆 **Runner-Up: GameToday 2025**
+
+I am proud to have been recognized as the **Runner-Up** for **GameToday 2025** with this game! 🎉  
+This is a testament to the hard work, scripting, and features we've implemented.
+
 ##  Scripts and Features
 
 This game have a lot of mechanics like walking, scanning, interacting, and so much more thanks to all the various script implemented in the game.<br>
