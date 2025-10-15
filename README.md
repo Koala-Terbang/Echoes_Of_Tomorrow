@@ -4,7 +4,7 @@
       <img width="100%" alt="gif1" src="https://github.com/Koala-Terbang/Echoes_Of_Tomorrow/blob/main/Assets/Assets/gif/EOTgif.gif">
     </td>
     <td align="right" width="50%">
-      <img width="100%" alt="gif2" src="http://github.com/Koala-Terbang/Echoes_Of_Tomorrow/blob/main/Assets/Assets/gif/EOTgif1.gif">
+      <img width="100%" alt="gif2" src="https://github.com/Koala-Terbang/Echoes_Of_Tomorrow/blob/main/Assets/Assets/gif/EOTgif1.gif">
     </td>
   </tr>
 </table>
