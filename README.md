@@ -1,10 +1,10 @@
 <table>
   <tr>
     <td align="left" width="50%">
-      <img width="100%" alt="gif1" src="https://github.com/NGnolep/Lush-Garner/blob/main/Assets/Assets/LGRepogif1.gif">
+      <img width="100%" alt="gif1" src="https://github.com/Koala-Terbang/Echoes_Of_Tomorrow/blob/main/Assets/Assets/gif/EOTgif.gif">
     </td>
     <td align="right" width="50%">
-      <img width="100%" alt="gif2" src="https://github.com/NGnolep/Lush-Garner/blob/main/Assets/Assets/LGRepogif2.gif">
+      <img width="100%" alt="gif2" src="http://github.com/Koala-Terbang/Echoes_Of_Tomorrow/blob/main/Assets/Assets/gif/EOTgif1.gif">
     </td>
   </tr>
 </table>
@@ -37,7 +37,7 @@ Echoes Of Tomorrow blends stealth, sci-fi visuals, and puzzles for a tense, enga
 <br>
 
 ```
-├── Lush-Garner                       # Contain everything needed for Please Survive to works.
+├── EchoesOfTomorrow                  # Contain everything needed for Please Survive to works.
    ├── .vscode                        # Contains configuration files for Visual Studio Code (VSCode) when it's used as the code editor for the project.
       ├── extensions.json             # Contains settings and configurations for debugging, code formatting, and IntelliSense. This folder is related to Visual Studio Code integration.
       ├── launch.json                 # Contains the configuration necessary to start debugging Unity C# scripts within VSCode.                     
